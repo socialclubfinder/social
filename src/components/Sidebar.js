@@ -54,6 +54,12 @@ export default function Sidebar({ spots, setSelectedCountry }) {
               <PlusCircle className="w-5 h-5 mr-2" />
               Submit Your Favorite Spot
             </a>
+
+            {/* Top Ad Banner */}
+            <div className="mb-4 p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
+              <a href="#" className="block">Ad: Discover Amazing Travel Deals!</a>
+            </div>
+
             <div className="relative mb-4">
               <input
                 type="text"
@@ -104,6 +110,14 @@ export default function Sidebar({ spots, setSelectedCountry }) {
               ))}
             </ul>
           </div>
+
+          {/* Bottom Ad Banner */}
+          <div className="px-4 pb-2">
+            <div className="p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
+              <a href="#" className="block">Ad: Best Rated Social Clubs Near You!</a>
+            </div>
+          </div>
+
           <div className="p-4 border-t border-gray-200">
             <div className="flex justify-center space-x-4">
               <a href="#" className="text-gray-600 hover:text-blue-500 transition-colors duration-200">
@@ -125,5 +139,3 @@ export default function Sidebar({ spots, setSelectedCountry }) {
     </div>
   );
 }
-
-

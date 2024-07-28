@@ -1,0 +1,22 @@
+/* Portugal.module.css */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  .paragraph {
+    margin-bottom: 1em;
+  }
+  
+  .paragraph strong {
+    font-size: 1.2em;
+  }
+  

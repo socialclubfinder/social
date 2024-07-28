@@ -23,8 +23,8 @@ export default function Home() {
         const data = await response.json();
         setSpots(data);
       } catch (e) {
-        console.error('Error fetching spots:', e);
-        setError('Failed to fetch kitesurfing spots');
+        console.error('Error fetching socialclubs:', e);
+        setError('Failed to fetch socialclubs');
       }
     }
     fetchSpots();
@@ -36,6 +36,7 @@ export default function Home() {
 
   return (
     <div className="flex h-screen">
+      
       <Sidebar 
         spots={spots}
         setSelectedCountry={setSelectedCountry}
