@@ -127,4 +127,3 @@ export default function Sidebar({ spots, setSelectedCountry }) {
 }
 
 
-//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
