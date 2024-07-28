@@ -1,0 +1,94 @@
+{
+  "germany": [
+    {
+      "name": "Berlin Cannabis Club",
+      "address": "Invalidenstraße 34, 10115 Berlin",
+      "lat": 52.5300,
+      "long": 13.3840,
+      "zipCode": "10115",
+      "city": "Berlin",
+      "country": "Germany",
+      "website": "https://www.berlincannabisclub.de",
+      "email": "info@berlincannabisclub.de",
+      "phone": "+49 30 12345678"
+    },
+    {
+      "name": "Munich Cannabis Club",
+      "address": "Sendlinger Str. 8, 80331 München",
+      "lat": 48.1333,
+      "long": 11.5667,
+      "zipCode": "80331",
+      "city": "München",
+      "country": "Germany",
+      "website": "https://www.munichcannabisclub.de",
+      "email": "contact@munichcannabisclub.de",
+      "phone": "+49 89 12345678"
+    }
+  ],
+  "spain": [
+    {
+      "name": "Barcelona Cannabis Club",
+      "address": "Carrer de la Marina, 132, 08013 Barcelona",
+      "lat": 41.4000,
+      "long": 2.1800,
+      "zipCode": "08013",
+      "city": "Barcelona",
+      "country": "Spain",
+      "website": "https://www.barcelonacannabisclub.com",
+      "email": "info@barcelonacannabisclub.com",
+      "phone": "+34 931 234 567"
+    },
+    {
+      "name": "Madrid Cannabis Club",
+      "address": "Calle de Atocha, 55, 28012 Madrid",
+      "lat": 40.4138,
+      "long": -3.7008,
+      "zipCode": "28012",
+      "city": "Madrid",
+      "country": "Spain",
+      "website": "https://www.madridcannabisclub.com",
+      "email": "contact@madridcannabisclub.com",
+      "phone": "+34 911 234 567"
+    }
+  ],
+  "malta": [
+    {
+      "name": "Valletta Cannabis Club",
+      "address": "Triq il-Merkanti, Valletta, VLT 1172",
+      "lat": 35.8997,
+      "long": 14.5147,
+      "zipCode": "VLT 1172",
+      "city": "Valletta",
+      "country": "Malta",
+      "website": "https://www.vallettacannabisclub.mt",
+      "email": "info@vallettacannabisclub.mt",
+      "phone": "+356 2123 4567"
+    }
+  ],
+  "portugal": [
+    {
+      "name": "Lisbon Cannabis Club",
+      "address": "Rua da Madalena 135, 1100-319 Lisboa",
+      "lat": 38.7139,
+      "long": -9.1396,
+      "zipCode": "1100-319",
+      "city": "Lisboa",
+      "country": "Portugal",
+      "website": "https://www.lisboncannabisclub.pt",
+      "email": "info@lisboncannabisclub.pt",
+      "phone": "+351 21 234 5678"
+    },
+    {
+      "name": "Porto Cannabis Club",
+      "address": "Rua das Flores 12, 4050-262 Porto",
+      "lat": 41.1456,
+      "long": -8.6094,
+      "zipCode": "4050-262",
+      "city": "Porto",
+      "country": "Portugal",
+      "website": "https://www.portocannabisclub.pt",
+      "email": "contact@portocannabisclub.pt",
+      "phone": "+351 22 234 5678"
+    }
+  ]
+}
