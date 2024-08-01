@@ -23,7 +23,7 @@ export default function Malta() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Cannabis Social Clubs (CSCs)</h2>
         <p className="mb-4">
-          Cannabis clubs, known as 'Cannabis Harm Reduction Associations,' are the sole legal source for purchasing cannabis in Malta. These member-only, non-profit organizations operate under strict guidelines.
+          Cannabis clubs, known as &apos;Cannabis Harm Reduction Associations,&apos; are the sole legal source for purchasing cannabis in Malta. These member-only, non-profit organizations operate under strict guidelines.
         </p>
       </section>
 
@@ -31,8 +31,8 @@ export default function Malta() {
         <h2 className="text-2xl font-semibold mb-4">Joining a Cannabis Club in Malta</h2>
         <p className="mb-4">To become a member of a Cannabis Club in Malta:</p>
         <ol className="list-decimal pl-6 mb-4">
-          <li>Visit ARUC's website (https://aruc.mt)</li>
-          <li>Navigate to the "Associations" tab</li>
+          <li>Visit ARUC&apos;s website (https://aruc.mt)</li>
+          <li>Navigate to the &quot;Associations&quot; tab</li>
           <li>Select your preferred club from the list of approved associations</li>
           <li>Contact the club via phone or email for membership procedures</li>
         </ol>
@@ -79,9 +79,9 @@ export default function Malta() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Malta's Approach to Cannabis Regulation</h2>
+        <h2 className="text-2xl font-semibold mb-4">Malta&apos;s Approach to Cannabis Regulation</h2>
         <p className="mb-4">
-          Malta's cannabis reform is focused on harm reduction rather than profit maximization. As Leonid McKay, executive chairperson of ARUC, stated: "Our reform is not about the maximization of profits... In Malta, we strongly believe that a full-blown commercialized market goes against the very principles of harm reduction."
+          Malta&apos;s cannabis reform is focused on harm reduction rather than profit maximization. As Leonid McKay, executive chairperson of ARUC, stated: {`"Our reform is not about the maximization of profits... In Malta, we strongly believe that a full-blown commercialized market goes against the very principles of harm reduction."`}
         </p>
       </section>
     </div>
