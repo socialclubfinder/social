@@ -34,6 +34,7 @@ const Navbar = () => {
           <li><Link href="/malta" className="text-white hover:underline">Malta</Link></li>
           <li><Link href="/germany" className="text-white hover:underline">Germany</Link></li>
           <li><Link href="/portugal" className="text-white hover:underline">Portugal</Link></li>
+          <li><Link href="/growing" className="text-white hover:underline">Growing</Link></li>
         </ul>
       </div>
       
@@ -45,6 +46,9 @@ const Navbar = () => {
           <li><Link href="/malta" className="block text-white hover:underline" onClick={toggleMenu}>Malta</Link></li>
           <li><Link href="/germany" className="block text-white hover:underline" onClick={toggleMenu}>Germany</Link></li>
           <li><Link href="/portugal" className="block text-white hover:underline" onClick={toggleMenu}>Portugal</Link></li>
+          <li><Link href="/growing" className="block text-white hover:underline" onClick={toggleMenu}>Growing</Link></li>
+
+         
         </ul>
       </div>
     </nav>

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { ChevronDown, ChevronUp, PlusCircle, Search, ChevronLeft, ChevronRight, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Sidebar({ spots, setSelectedCountry }) {
@@ -49,13 +50,12 @@ export default function Sidebar({ spots, setSelectedCountry }) {
               href="https://forms.gle/TyXaJDEbM4C7Ptc36"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-2 px-4 mb-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200"
+              className="flex items-center justify-center w-full py-2 px-4 mb-4 bg-emerald-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200"
             >
               <PlusCircle className="w-5 h-5 mr-2" />
-              Submit Your Favorite Spot
+              Submit Your Favorite SocialClub
             </a>
 
-            {/* Top Ad Banner */}
             <div className="mb-4 p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
               <a href="#" className="block">Ad: Discover Amazing Travel Deals!</a>
             </div>
@@ -99,9 +99,11 @@ export default function Sidebar({ spots, setSelectedCountry }) {
                     <ul className="mt-2 ml-2 space-y-1">
                       {locations.map((spot) => (
                         <li key={spot.name} className="py-2 px-3 bg-white rounded-md shadow-sm">
-                          <span className="text-sm text-gray-700 hover:text-blue-500 transition-colors duration-200">
-                            {spot.name}
-                          </span>
+                          <Link href={`/clubs/${spot.name.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}`}>
+                            <span className="text-sm text-gray-700 hover:text-blue-500 transition-colors duration-200">
+                              {spot.name}
+                            </span>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -111,11 +113,12 @@ export default function Sidebar({ spots, setSelectedCountry }) {
             </ul>
           </div>
 
-          {/* Bottom Ad Banner */}
           <div className="px-4 pb-2">
-            <div className="p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
-              <a href="#" className="block">Ad: Best Rated Social Clubs Near You!</a>
-            </div>
+            <a href="https://www.royalqueenseeds.de/?a_aid=54839603&a_bid=a4883cb5" target="_blank" rel="noopener noreferrer">
+              <div className="p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&bgcolor=FFFFFF&data=https%3A%2F%2Fwww.royalqueenseeds.de%2F%3Fa_aid%3D54839603%26a_bid%3Da4883cb5" alt="QR Code" />
+              </div>
+            </a>
           </div>
 
           <div className="p-4 border-t border-gray-200">

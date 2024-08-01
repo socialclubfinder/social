@@ -1,5 +1,5 @@
 {
-  "germany": [
+  "🇩🇪 germany": [
     {
       "name": "Berlin Cannabis Club",
       "address": "Invalidenstraße 34, 10115 Berlin",
@@ -25,33 +25,33 @@
       "phone": "+49 89 12345678"
     }
   ],
-  "spain": [
+  "🇪🇸 spain": [
     {
-      "name": "Barcelona Cannabis Club",
-      "address": "Carrer de la Marina, 132, 08013 Barcelona",
-      "lat": 41.4000,
-      "long": 2.1800,
-      "zipCode": "08013",
-      "city": "Barcelona",
+      "name": "Buena Vida CSC - Social Club",
+      "address": "C. Juan XXIII, 33, 38650 Los Cristianos",
+      "lat": 28.051210,
+      "long": -16.720070,
+      "zipCode": "38650 ",
+      "city": "Santa Cruz de Tenerife",
       "country": "Spain",
-      "website": "https://www.barcelonacannabisclub.com",
+      "website": "https://www.buenavidacsc.com",
       "email": "info@barcelonacannabisclub.com",
-      "phone": "+34 931 234 567"
+      "phone": "+34602484907"
     },
     {
-      "name": "Madrid Cannabis Club",
-      "address": "Calle de Atocha, 55, 28012 Madrid",
-      "lat": 40.4138,
-      "long": -3.7008,
-      "zipCode": "28012",
-      "city": "Madrid",
+      "name": "Sticky Tarifa",
+      "address": "Exclusivo para socios Tarifa, Andalucia ES 11380",
+      "lat": 36.012710,
+      "long": -5.602950,
+      "zipCode": "11380",
+      "city": "Andalucia",
       "country": "Spain",
-      "website": "https://www.madridcannabisclub.com",
-      "email": "contact@madridcannabisclub.com",
-      "phone": "+34 911 234 567"
+      "website": "",
+      "email": "",
+      "phone": "+34 663 25 41 41"
     }
   ],
-  "malta": [
+  "🇲🇹 malta": [
     {
       "name": "Valletta Cannabis Club",
       "address": "Triq il-Merkanti, Valletta, VLT 1172",
@@ -65,7 +65,7 @@
       "phone": "+356 2123 4567"
     }
   ],
-  "portugal": [
+  "🇵🇹 portugal": [
     {
       "name": "Lisbon Cannabis Club",
       "address": "Rua da Madalena 135, 1100-319 Lisboa",
@@ -90,5 +90,20 @@
       "email": "contact@portocannabisclub.pt",
       "phone": "+351 22 234 5678"
     }
+  ],
+  "🇨🇭 switzerland": [
+    {
+      "name": "MANY‘S Social Club",
+      "address": "Beckenhofstrasse 7",
+      "lat": 47.383340,
+      "long": 8.541620,
+      "zipCode": "8006",
+      "city": "Zürich",
+      "country": "Switzerland",
+      "website": "https://www.manys.ch/",
+      "email": "info@manys.ch",
+      "phone": "+41 79 523 08 14"
+    }
+    
   ]
 }

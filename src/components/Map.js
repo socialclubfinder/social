@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,21 +11,27 @@ const customIcon = L.icon({
   popupAnchor: [0, -35]
 });
 
+function formatNameForUrl(name) {
+  return name.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+}
+
 export default function Map({ spots }) {
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  const [mapInitialized, setMapInitialized] = useState(false);
 
   useEffect(() => {
     if (!mapRef.current) {
       initializeMap();
+    } else {
+      updateMarkers();
     }
-
-    updateMarkers();
 
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
+        setMapInitialized(false);
       }
     };
   }, [spots]);
@@ -36,12 +42,16 @@ export default function Map({ spots }) {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(mapRef.current);
+      setMapInitialized(true);
+      updateMarkers();
     } catch (error) {
       console.error('Error initializing map:', error);
     }
   };
 
   const updateMarkers = () => {
+    if (!mapInitialized) return;
+
     try {
       // Clear existing markers
       markersRef.current.forEach(marker => marker.remove());
@@ -60,13 +70,14 @@ export default function Map({ spots }) {
               <p>Zip Code: ${spot.zipCode}</p>
               ${spot.website ? `<p><a href="${spot.website}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Visit Website</a></p>` : ''}
               ${spot.phone ? `<p><a href="tel:${spot.phone}" class="text-blue-500 hover:underline">Call ${spot.phone}</a></p>` : ''}
+              <p><a href="/clubs/${formatNameForUrl(spot.name)}" class="text-blue-500 hover:underline">View Club Details</a></p>
             </div>
           `);
         markersRef.current.push(marker);
       });
 
       // Adjust map view to fit all markers
-      if (allSpots.length > 0) {
+      if (allSpots.length > 0 && mapRef.current) {
         const group = L.featureGroup(markersRef.current);
         mapRef.current.fitBounds(group.getBounds().pad(0.1));
       }
