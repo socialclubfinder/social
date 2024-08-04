@@ -1,7 +1,9 @@
 'use client';
+import React from 'react';
+
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Import the Image component
+//import Image from 'next/image'; // Import the Image component
 import { ChevronDown, ChevronUp, PlusCircle, Search, ChevronLeft, ChevronRight, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const countryFlags = {

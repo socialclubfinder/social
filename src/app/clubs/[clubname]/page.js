@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { getClubByUrlName, getAllClubUrlNames } from '@/lib/clubs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';

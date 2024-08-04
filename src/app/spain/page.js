@@ -1,3 +1,5 @@
+import React from 'react';
+
 import styles from './Spain.module.css';
 
 export default function Spain() {
