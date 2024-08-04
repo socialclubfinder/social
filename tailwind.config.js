@@ -4,7 +4,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    './styles/**/*.{css}', // Ensure this is included if using global CSS
+    './styles/**/*.css', // Ensure this is included if using global CSS
   ],
   theme: {
     extend: {
