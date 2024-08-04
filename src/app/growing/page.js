@@ -19,7 +19,7 @@ const GrowingGuide = () => {
               className="w-full md:w-1/2 h-auto mb-4 md:mb-0"
             />
             <p className="text-gray-700 md:ml-4">
-              Start by soaking cannabis seeds in water for 24-48 hours. After soaking, place the seeds on a damp paper towel and keep them in a warm, dark place. Within a few days, the seeds will sprout and a small taproot will emerge. Once the taproot is about 1/4 inch long, it's time to plant the seeds.
+              Start by soaking cannabis seeds in water for 24-48 hours. After soaking, place the seeds on a damp paper towel and keep them in a warm, dark place. Within a few days, the seeds will sprout and a small taproot will emerge. Once the taproot is about 1/4 inch long, it&#39;s time to plant the seeds.
             </p>
           </div>
         </section>
@@ -87,7 +87,7 @@ const GrowingGuide = () => {
               className="w-full md:w-1/2 h-auto mb-4 md:mb-0"
             />
             <p className="text-gray-700 md:ml-4">
-              Harvest the buds when trichomes (tiny resin glands) are milky white or amber. Use clean, sharp scissors or pruning shears to cut the branches. Handle the buds carefully to avoid damaging them. 
+              Harvest the buds when trichomes (tiny resin glands) are milky white or amber. Use clean, sharp scissors or pruning shears to cut the branches. Handle the buds carefully to avoid damaging them.
             </p>
           </div>
         </section>
