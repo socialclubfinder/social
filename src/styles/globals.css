@@ -1,0 +1,11 @@
+/* styles/globals.css */
+
+/* Import Tailwind's base styles, components, and utilities */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Apply Tailwind's background color utility to the body element */
+body {
+  @apply bg-gray-100; /* You can choose any Tailwind background color class here */
+}

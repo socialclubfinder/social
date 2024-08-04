@@ -15,53 +15,63 @@ function formatNameForUrl(name) {
   return name.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
 }
 
-export default function Map({ spots }) {
+export default function Map() {
   const mapRef = useRef(null);
+  const mapInstanceRef = useRef(null);
   const markersRef = useRef([]);
-  const [mapInitialized, setMapInitialized] = useState(false);
+  const [spots, setSpots] = useState([]);
 
   useEffect(() => {
-    if (!mapRef.current) {
-      initializeMap();
-    } else {
-      updateMarkers();
+    async function fetchSpots() {
+      try {
+        const response = await fetch('/api/clubs');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const clubsByCountry = await response.json();
+        const allSpots = Object.values(clubsByCountry).flat();
+        setSpots(allSpots);
+      } catch (error) {
+        console.error('Error fetching clubs:', error);
+      }
+    }
+    fetchSpots();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !mapInstanceRef.current && mapRef.current) {
+      mapInstanceRef.current = L.map(mapRef.current).setView([0, 0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(mapInstanceRef.current);
     }
 
     return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-        setMapInitialized(false);
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
       }
     };
+  }, []);
+
+  useEffect(() => {
+    if (mapInstanceRef.current && spots.length > 0) {
+      updateMarkers();
+    }
   }, [spots]);
 
-  const initializeMap = () => {
-    try {
-      mapRef.current = L.map('map').setView([51.1657, 10.4515], 5);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(mapRef.current);
-      setMapInitialized(true);
-      updateMarkers();
-    } catch (error) {
-      console.error('Error initializing map:', error);
-    }
-  };
-
   const updateMarkers = () => {
-    if (!mapInitialized) return;
+    if (!mapInstanceRef.current) return;
 
-    try {
-      // Clear existing markers
-      markersRef.current.forEach(marker => marker.remove());
-      markersRef.current = [];
+    // Clear existing markers
+    markersRef.current.forEach(marker => marker.remove());
+    markersRef.current = [];
 
-      // Add new markers
-      const allSpots = Object.values(spots).flat();
-      allSpots.forEach(spot => {
+    // Add new markers
+    spots.forEach(spot => {
+      if (spot.lat && spot.long) {
         const marker = L.marker([spot.lat, spot.long], { icon: customIcon })
-          .addTo(mapRef.current)
+          .addTo(mapInstanceRef.current)
           .bindPopup(`
             <div class="text-center">
               <h3 class="font-bold text-lg">${spot.name}</h3>
@@ -74,17 +84,17 @@ export default function Map({ spots }) {
             </div>
           `);
         markersRef.current.push(marker);
-      });
-
-      // Adjust map view to fit all markers
-      if (allSpots.length > 0 && mapRef.current) {
-        const group = L.featureGroup(markersRef.current);
-        mapRef.current.fitBounds(group.getBounds().pad(0.1));
       }
-    } catch (error) {
-      console.error('Error updating markers:', error);
+    });
+
+    // Adjust map view to fit all markers
+    if (spots.length > 0) {
+      const group = L.featureGroup(markersRef.current);
+      mapInstanceRef.current.fitBounds(group.getBounds().pad(0.1));
     }
   };
 
-  return <div id="map" className="h-full w-full" />;
+  return (
+    <div ref={mapRef} className="h-full w-full" />
+  );
 }

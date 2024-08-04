@@ -35,6 +35,7 @@ const Navbar = () => {
           <li><Link href="/germany" className="text-white hover:underline">Germany</Link></li>
           <li><Link href="/portugal" className="text-white hover:underline">Portugal</Link></li>
           <li><Link href="/growing" className="text-white hover:underline">Growing</Link></li>
+          <li><Link href="/addclub" className="bg-blue-500 text-white hover:underline rounded-full px-4 py-2">SubmitClub</Link></li>
         </ul>
       </div>
       
@@ -47,7 +48,7 @@ const Navbar = () => {
           <li><Link href="/germany" className="block text-white hover:underline" onClick={toggleMenu}>Germany</Link></li>
           <li><Link href="/portugal" className="block text-white hover:underline" onClick={toggleMenu}>Portugal</Link></li>
           <li><Link href="/growing" className="block text-white hover:underline" onClick={toggleMenu}>Growing</Link></li>
-
+          <li><Link href="/addclub" className="bg-blue-500 text-white hover:underline rounded-full px-4 py-2" onClick={toggleMenu}>SubmitClub</Link></li>
          
         </ul>
       </div>

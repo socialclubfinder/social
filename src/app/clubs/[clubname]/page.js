@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Banner from '@/components/Banner';
 
-export default function ClubPage({ params }) {
-  const club = getClubByUrlName(params.clubname);
+export default async function ClubPage({ params }) {
+  const club = await getClubByUrlName(params.clubname);
 
   if (!club) {
     notFound();
@@ -18,7 +18,7 @@ export default function ClubPage({ params }) {
         <h1 className="text-3xl font-bold mb-4">{club.name}</h1>
         <p className="mb-2">{club.address}</p>
         <p className="mb-2">{club.city}, {club.country}</p>
-        {club.zipCode && <p className="mb-2">Zip Code: {club.zipCode}</p>}
+        {club.zipcode && <p className="mb-2">Zip Code: {club.zipcode}</p>}
         {club.website && (
           <p className="mb-2">
             <a href={club.website} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
@@ -42,7 +42,7 @@ export default function ClubPage({ params }) {
 }
 
 export async function generateStaticParams() {
-  const urlNames = getAllClubUrlNames();
+  const urlNames = await getAllClubUrlNames();
   return urlNames.map((urlName) => ({
     clubname: urlName,
   }));
