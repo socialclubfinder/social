@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ChevronUp, PlusCircle, Search, ChevronLeft, ChevronRight,  Twitter, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image'; // Import the Image component
+import { ChevronDown, ChevronUp, PlusCircle, Search, ChevronLeft, ChevronRight, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const countryFlags = {
   'Spain': '🇪🇸',
@@ -174,7 +175,12 @@ export default function Sidebar({ setSelectedCountry }) {
           <div className="px-4 pb-2">
             <a href="https://www.royalqueenseeds.de/?a_aid=54839603&a_bid=a4883cb5" target="_blank" rel="noopener noreferrer">
               <div className="p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&bgcolor=FFFFFF&data=https%3A%2F%2Fwww.royalqueenseeds.de%2F%3Fa_aid%3D54839603%26a_bid%3Da4883cb5" alt="QR Code" />
+                {/* <Image
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&bgcolor=FFFFFF&data=https%3A%2F%2Fwww.royalqueenseeds.de%2F%3Fa_aid%3D54839603%26a_bid%3Da4883cb5"
+                  alt="QR Code"
+                  width={200}
+                  height={200}
+                /> */}
               </div>
             </a>
           </div>

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -54,13 +54,7 @@ export default function Map() {
     };
   }, []);
 
-  useEffect(() => {
-    if (mapInstanceRef.current && spots.length > 0) {
-      updateMarkers();
-    }
-  }, [spots]);
-
-  const updateMarkers = () => {
+  const updateMarkers = useCallback(() => {
     if (!mapInstanceRef.current) return;
 
     // Clear existing markers
@@ -92,7 +86,13 @@ export default function Map() {
       const group = L.featureGroup(markersRef.current);
       mapInstanceRef.current.fitBounds(group.getBounds().pad(0.1));
     }
-  };
+  }, [spots]);
+
+  useEffect(() => {
+    if (mapInstanceRef.current && spots.length > 0) {
+      updateMarkers();
+    }
+  }, [spots, updateMarkers]);
 
   return (
     <div ref={mapRef} className="h-full w-full" />

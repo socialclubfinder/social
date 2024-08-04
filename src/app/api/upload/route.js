@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import FormData from 'form-data';
 
 // Retrieve the PINATA_JWT from environment variables
-const PINATA_JWT = process.env.PINATA_JWT;
+const PINATA_JWT = process.env.PINATA_JWT_KEY;
 
 export async function POST(request) {
   try {
