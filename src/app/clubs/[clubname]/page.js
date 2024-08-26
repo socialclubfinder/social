@@ -3,7 +3,8 @@ import React from 'react';
 import { getClubByUrlName, getAllClubUrlNames } from '@/lib/clubs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Banner from '@/components/Banner';
+import Banner from '../../../components/Banner';
+import AdBanner from '@/components/AdBanner';
 
 export default async function ClubPage({ params }) {
   const club = await getClubByUrlName(params.clubname);
@@ -14,13 +15,14 @@ export default async function ClubPage({ params }) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Banner />
-
+     
+    <AdBanner/>
       <div className="container mx-auto p-4 flex-grow">
         <h1 className="text-3xl font-bold mb-4">{club.name}</h1>
         <p className="mb-2">{club.address}</p>
         <p className="mb-2">{club.city}, {club.country}</p>
         {club.zipcode && <p className="mb-2">Zip Code: {club.zipcode}</p>}
+        <p className="mb-2">{club.description}</p>
         {club.website && (
           <p className="mb-2">
             <a href={club.website} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
@@ -39,6 +41,7 @@ export default async function ClubPage({ params }) {
           Back to Map
         </Link>
       </div>
+      <Banner />
     </div>
   );
 }

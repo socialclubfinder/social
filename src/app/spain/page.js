@@ -1,12 +1,14 @@
 import React from 'react';
-
+//import AddressAutocomplete from '../../components/Autocomplete';
+import AdBanner from '@/components/AdBanner';
 import styles from './Spain.module.css';
 
 export default function Spain() {
   return (
     <div className={styles.container}>
-    
+    <AdBanner/>
       <h1 className={styles.title}>Spain</h1>
+     
       <p className={styles.paragraph}>
         <strong>Spain</strong>
       </p>
@@ -23,6 +25,7 @@ export default function Spain() {
         crackdowns, they have mostly been tolerated by local law enforcement,
         despite objections from the Central Government.
       </p>
+      
     </div>
   );
 }

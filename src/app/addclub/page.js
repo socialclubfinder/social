@@ -1,9 +1,18 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-
 import styles from './AddClub.module.css';
+import AdBanner from '@/components/AdBanner';
+
+
+const countryData = {
+  Germany: { code: '+49', placeholder: '+49 1234567890' },
+  Spain: { code: '+34', placeholder: '+34 123456789' },
+  Portugal: { code: '+351', placeholder: '+351 123 456 789' },
+  Malta: { code: '+356', placeholder: '+356 12345678' },
+  Switzerland: { code: '+41', placeholder: '+41 123 456 789' }
+};
 
 const AddClub = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +20,7 @@ const AddClub = () => {
     address: '',
     zipcode: '',
     city: '',
-    country: '',
+    country: 'Germany', // Default to Germany
     website: '',
     email: '',
     phone: '',
@@ -36,6 +45,8 @@ const AddClub = () => {
   });
 
   const [submissionStatus, setSubmissionStatus] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -48,10 +59,30 @@ const AddClub = () => {
           [key]: value,
         },
       }));
-    } else if (type === 'file') {
+    } else if (name === 'website') {
+      const websiteValue = value.startsWith('http://') || value.startsWith('https://') ? value : `https://${value}`;
       setFormData(prevData => ({
         ...prevData,
-        [name]: files[0],
+        [name]: websiteValue,
+      }));
+    } else if (type === 'file') {
+      const file = files[0];
+      setFormData(prevData => ({
+        ...prevData,
+        [name]: file,
+      }));
+      setImagePreview(URL.createObjectURL(file));
+    } else if (name === 'phone') {
+      setFormData(prevData => ({
+        ...prevData,
+        phone: value,
+      }));
+    } else if (name === 'country') {
+      const selectedCountry = value;
+      setFormData(prevData => ({
+        ...prevData,
+        country: selectedCountry,
+        phone: countryData[selectedCountry].code + prevData.phone.replace(/^\+\d+/, '') // Adjust the phone number
       }));
     } else {
       setFormData(prevData => ({
@@ -59,6 +90,30 @@ const AddClub = () => {
         [name]: value,
       }));
     }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'copy';
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      setFormData(prevData => ({
+        ...prevData,
+        image: file,
+      }));
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleFileInputClick = () => {
+    fileInputRef.current.click();
   };
 
   const handleOpeningHoursChange = (day, field, value) => {
@@ -77,6 +132,15 @@ const AddClub = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionStatus('submitting');
+
+    const emailDomain = formData.email.split('@')[1];
+    const websiteDomain = new URL(formData.website).hostname.replace(/^www\./, '');
+
+    if (emailDomain !== websiteDomain) {
+      alert(`Email domain (${emailDomain}) does not match website domain (${websiteDomain}).`);
+      setSubmissionStatus(null);
+      return;
+    }
 
     try {
       let imageCid = null;
@@ -103,7 +167,7 @@ const AddClub = () => {
       
       for (const [key, value] of Object.entries(formData)) {
         if (key === 'image') {
-          continue; // Skip the image file, we'll use the IPFS hash instead
+          continue;
         } else if (key === 'openingHours' || key === 'memberfee') {
           clubFormData.append(key, JSON.stringify(value));
         } else {
@@ -111,7 +175,7 @@ const AddClub = () => {
         }
       }
 
-      clubFormData.append('image', imageCid); // Use the IPFS hash as the image value
+      clubFormData.append('image', imageCid);
 
       const addClubResponse = await fetch('/api/add-club', {
         method: 'POST',
@@ -143,12 +207,10 @@ const AddClub = () => {
   if (submissionStatus === 'success') {
     return (
       <div className={styles.container}>
-        <h1 className={styles.heading}>❤️ Thank You!</h1>
+        <h1 className={styles.heading}>❤️ Thanks for your submission!</h1>
         <div className={styles.successMessage}>
-          <p>Thanks for your submission. We will send you an email for verification. Once verified, your club will be shown on our page within 24 hours.</p>
-          <Link href="/" className="text-blue-500 hover:underline">
-          Back to Map
-        </Link>
+          <p>We will manually verify each submission.<br />Once verified, your club will be shown on our page</p>
+          <Link href="/" className="text-blue-500 hover:underline">Back to Map</Link>
         </div>
       </div>
     );
@@ -159,57 +221,80 @@ const AddClub = () => {
       <div className={styles.container}>
         <h1 className={styles.heading}>Oops! Something went wrong.</h1>
         <p>We're sorry, but we couldn't process your submission. Please try again later.</p>
+        <p>If the error persists, please send an email to <a href="mailto:420@ganjacoin.com">420@ganjacoin.com</a>.</p>
       </div>
     );
   }
 
   return (
+    
     <div className={styles.container}>
-     <h1 className={styles.heading}>Add Club</h1>
+      <AdBanner/>
+      <h1 className={styles.heading}>Add Club</h1>
       <div className="text-center mt-6">
+      
         <p className="text-gray-700 leading-relaxed mb-4">
-          To list your club on SocialClubFinder.com, complete the form using an email from your club’s domain (e.g., name@myclub.com for myclub.com).
-        </p>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          After submission, a confirmation email will be sent to your email. Click the verification link and your club will be listed on our site.
-        </p>
+          We will manually verify each submission before listing, expect some waiting time
+          </p>
       </div>
-
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
           <label className={styles.label}>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} className={styles.input} required />
+          <input type="text" name="name" value={formData.name} onChange={handleChange} className={styles.input} placeholder="Social Club Name" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Address</label>
-          <input type="text" name="address" value={formData.address} onChange={handleChange} className={styles.input} required />
+          <input type="text" name="address" value={formData.address} onChange={handleChange} className={styles.input} placeholder="Address" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Zipcode</label>
-          <input type="text" name="zipcode" value={formData.zipcode} onChange={handleChange} className={styles.input} required />
+          <input type="text" name="zipcode" value={formData.zipcode} onChange={handleChange} className={styles.input} placeholder="Zipcode" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>City</label>
-          <input type="text" name="city" value={formData.city} onChange={handleChange} className={styles.input} required />
+          <input type="text" name="city" value={formData.city} onChange={handleChange} className={styles.input} placeholder="City" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Country</label>
-          <input type="text" name="country" value={formData.country} onChange={handleChange} className={styles.input} required />
+          <select name="country" value={formData.country} onChange={handleChange} className={styles.select}>
+            {Object.keys(countryData).map(country => (
+              <option key={country} value={country}>{country}</option>
+            ))}
+          </select>
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Website</label>
-          <input type="url" name="website" value={formData.website} onChange={handleChange} className={styles.input} />
+          <input type="url" name="website" value={formData.website} onChange={handleChange} className={styles.input} placeholder="mycsc.com" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} required />
+          <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} placeholder="email" required />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Phone</label>
-          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={styles.input} required />
+          <div className={styles.phoneGroup}>
+            <select
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              className={`${styles.input} ${styles.countrySelect}`}
+            >
+              {Object.keys(countryData).map(country => (
+                <option key={country} value={country}>{country}</option>
+              ))}
+            </select>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className={styles.input}
+              placeholder={countryData[formData.country].placeholder}
+            />
+          </div>
         </div>
-        
+
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label className={styles.label}>Opening Hours</label>
           <div className={styles.openingHours}>
@@ -247,11 +332,33 @@ const AddClub = () => {
         </div>
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label className={styles.label}>Description</label>
-          <textarea name="description" value={formData.description} onChange={handleChange} className={styles.textarea} maxLength="200" required />
+          <textarea name="description" value={formData.description} onChange={handleChange} className={styles.textarea} maxLength="500" placeholder="Describe your social club" required />
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>Image</label>
-          <input type="file" name="image" onChange={handleChange} className={styles.input} accept="image/*" />
+          <label className={styles.label}>Image (.png,.jpg,.jpeg only)</label>
+          <div
+            className={styles.dragDropArea}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onClick={handleFileInputClick}
+          >
+            <input
+              type="file"
+              name="image"
+              onChange={handleChange}
+              ref={fileInputRef}
+              className={styles.fileInput}
+              accept="image/*"
+              style={{ display: 'none' }}
+            />
+            <p className={styles.dragDropText}>Drag & drop an image here or click to select</p>
+            {imagePreview && (
+              <div className={styles.imagePreview}>
+                <img src={imagePreview} alt="Selected" className={styles.thumbnail} />
+                <p className={styles.filename}>{formData.image.name}</p>
+              </div>
+            )}
+          </div>
         </div>
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label className={styles.label}>Member Fee</label>
@@ -259,10 +366,11 @@ const AddClub = () => {
             <input
               type="number"
               name="memberfee.amount"
+              placeholder="amount"
               value={formData.memberfee.amount}
               onChange={handleChange}
               className={`${styles.input} ${styles.feeInput}`}
-              step="0.01"
+              step="1"
               min="0"
               required
             />

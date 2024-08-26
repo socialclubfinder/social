@@ -1,0 +1,26 @@
+.adContainer {
+  width: 320px; /* Set the exact width of the banner */
+  height: 50px; /* Set the exact height of the banner */
+  margin: 0 auto; /* Center the ad horizontally */
+  padding: 0; /* Remove any padding */
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .adContainer {
+      width: 80%; /* Allow the container to scale down */
+      max-width: 320px; /* Ensure it does not exceed 468px */
+      height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  .adContainer {
+      width: 80%; /* Allow the container to scale down */
+      max-width: 320px; /* Adjust for mobile devices */
+      height: auto; /* Maintain aspect ratio */
+  }
+}

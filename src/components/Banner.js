@@ -1,15 +1,22 @@
+// components/BannerAd.js
 import Image from 'next/image';
 
-export default function Banner() {
-  return (
-    <div className="relative w-full" style={{ width:'720', height: '90px' }}> {/* Adjust height as needed */}
+const Banner = () => (
+  <div className="flex justify-center">
+    <a 
+      href="https://freebitco.in/?r=19278965" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="block"
+    >
       <Image
-        src="/images/socialclubfinder_banner.png"
-        alt="Social Club Finder Banner"
-        layout="fill"
-        objectFit="contain"
-        priority
+        src="https://static1.freebitco.in/banners/728x90-3.png"
+        alt="Free Bitcoin Banner"
+        width={728}
+        height={90}
       />
-    </div>
-  );
-}
+    </a>
+  </div>
+);
+
+export default Banner;

@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
-
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-//import Image from 'next/image'; // Import the Image component
-import { ChevronDown, ChevronUp, PlusCircle, Search, ChevronLeft, ChevronRight, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, ChevronLeft, ChevronRight, Twitter,AtSign, Linkedin } from 'lucide-react';
+import AdBanner468 from './AdBanner468';
 
 const countryFlags = {
   'Spain': '🇪🇸',
@@ -12,7 +11,6 @@ const countryFlags = {
   'Germany': '🇩🇪',
   'Malta': '🇲🇹',
   'Switzerland': '🇨🇭'
-  // Add more countries and their flags as needed
 };
 
 const defaultFlag = '🏳️';
@@ -31,6 +29,8 @@ const Telegram = (props) => (
     />
   </svg>
 );
+
+
 
 export default function Sidebar({ setSelectedCountry }) {
   const [spots, setSpots] = useState({});
@@ -116,8 +116,11 @@ export default function Sidebar({ setSelectedCountry }) {
             </a> */}
 
             <div className="mb-4 p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
-              <a href="#" className="block">Ad: Discover Amazing Travel Deals!</a>
+              <a href="stake.com/?c=XhYNip7W" className="block">
+                <img src="./images/Stake_Casino_468x60.gif" alt="stake.com" className="mx-auto"/>
+              </a>
             </div>
+
 
             <div className="relative mb-4">
               <input
@@ -172,17 +175,21 @@ export default function Sidebar({ setSelectedCountry }) {
                 </li>
               ))}
             </ul>
+            <div className=" text-black h-5">
+          🎁 Freebies 
+            </div>
+          </div>
+
+          
+
+          <div className="px-4 pb-2">
+           <AdBanner468/>
           </div>
 
           <div className="px-4 pb-2">
-            <a href="https://www.royalqueenseeds.de/?a_aid=54839603&a_bid=a4883cb5" target="_blank" rel="noopener noreferrer">
-              <div className="p-2 bg-gray-200 rounded-lg text-center text-sm text-gray-700">
-                {/* <Image
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&bgcolor=FFFFFF&data=https%3A%2F%2Fwww.royalqueenseeds.de%2F%3Fa_aid%3D54839603%26a_bid%3Da4883cb5"
-                  alt="QR Code"
-                  width={200}
-                  height={200}
-                /> */}
+            <a href="https://amzn.to/3MbOcs4" target="_blank" rel="noopener noreferrer">
+              <div className="p-2 bg-yellow-100 rounded-lg text-center text-sm text-gray-700">
+              <img src="https://media3.giphy.com/media/zWyv9xtsEfXQQ/giphy.gif?cid=6c09b952xp2a0a64ojstex3arp1ezcze1gnm5hewcspardj6&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="amazon"></img>
               </div>
             </a>
           </div>
@@ -195,10 +202,13 @@ export default function Sidebar({ setSelectedCountry }) {
               <a href="https://x.com/ganjacoin420" className="text-gray-600 hover:text-blue-400 transition-colors duration-200">
                 <Twitter className="w-6 h-6" />
               </a>
-              {/* <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors duration-200">
-                <Instagram className="w-6 h-6" />
+                          <a 
+                href="mailto:420ganjacoin@gmail.com" 
+                className="text-gray-600 hover:text-pink-500 transition-colors duration-200"
+              >
+                <AtSign className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-600 hover:text-blue-700 transition-colors duration-200">
+              {/* <a href="#" className="text-gray-600 hover:text-blue-700 transition-colors duration-200">
                 <Linkedin className="w-6 h-6" />
               </a> */}
             </div>

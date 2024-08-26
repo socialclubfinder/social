@@ -1,152 +1,211 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color:'black';
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color:'black';
   
-  .heading {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #a20f0f;
-  }
-  
-  .form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .fullWidth {
-    grid-column: 1 / -1;
-  }
-  
-  .label {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 5px;
-  }
-  
-  .input, .textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: #333;
-  }
-  
-  .textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  .button {
-    grid-column: 1 / -1;
-    padding: 12px 24px;
-    font-size: 18px;
-    border-radius: 4px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  .feeInputs {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .feeInput {
-    flex: 2;
-  }
-  
-  .currencySelect, .feeTypeSelect {
-    flex: 1;
-  }
-  
-  .openingHours {
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: black;
-  }
-  
-  .dayRow {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .dayLabel {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    font-weight: bold;
-  }
-  
-  .dayCheckbox {
-    margin-right: 10px;
-  }
-  
-  .timeInputs {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .timeInput {
-    width: 100px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .successMessage {
-    text-align: center;
-  }
-  
-  .successMessage p {
-    color: #555;
-    font-size: 18px;
-    line-height: 1.6;
-  }
+}
 
-  .suggestions {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ccc;
-    border-top: none;
-    max-height: 150px;
-    overflow-y: auto;
-    color:black;
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #a20f0f;
+}
 
-  }
-  
-  .suggestions li {
-    padding: 10px;
-    cursor: pointer;
-    color:black;
-  }
-  
-  .suggestions li:hover {
-    background-color: #f0f0f0;
-  }
-  .feeInputs{
-    color:black;
-  }
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.button {
+  grid-column: 1 / -1;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.feeInputs {
+  display: flex;
+  gap: 10px;
+}
+
+.feeInput {
+  flex: 2;
+}
+
+.currencySelect, .feeTypeSelect {
+  flex: 1;
+}
+
+.openingHours {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: black;
+}
+
+.dayRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dayLabel {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  font-weight: bold;
+}
+
+.dayCheckbox {
+  margin-right: 10px;
+}
+
+.timeInputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeInput {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.successMessage {
+  text-align: center;
+}
+
+.successMessage p {
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  color:black;
+
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+  color:black;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+.feeInputs{
+  color:black;
+}
+
+/* Add these styles to your AddClub.module.css */
+
+.dragDropArea {
+  border: 2px dashed #10b981; /* Blue border for visibility */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f9f9f9; /* Light background to distinguish it */
+  color: #333; /* Darker text for better readability */
+  margin-top: 10px; /* Space above the drop area */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.dragDropArea:hover {
+  background-color: #e0e0e0; /* Slightly darker background on hover */
+  border-color: #04ffdb; /* Darker border color on hover */
+}
+
+.fileInput {
+  display: none; /* Hide the default file input */
+}
+
+.dragDropText {
+  margin-top: 10px; /* Space between text and border */
+  font-size: 16px; /* Slightly larger text for visibility */
+}
+.phoneGroup {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+}
+
+.select {
+  width: 100%;
+}
+
+.imagePreview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filename {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #555;
+}

@@ -1,0 +1,22 @@
+.adContainer {
+  width: 100%; /* Allow the container to take up the full width */
+  max-width: 728px; /* Restrict the maximum width to 728px */
+  height: auto; /* Let the height be proportional to the width */
+  margin: 0 auto; /* Center the ad horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .adContainer {
+    max-width: 468px; /* Adjust the max width for tablets and smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .adContainer {
+    max-width: 320px; /* Adjust the max width for mobile devices */
+  }
+}
